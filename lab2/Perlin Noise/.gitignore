@@ -1,22 +1,13 @@
-### Python files
-.venv
-
-### Lab2
-perlin.jpg
-TerrainTexturesPackFree/
-
 ###
 # Unity folders and files
 ###
 [Aa]ssets/AssetStoreTools*
-[Bb]uild
-[Ll]ibrary
-[Ll]ocal[Cc]ache
-[Oo]bj
-[Tt]emp
-[Uu]nityGenerated
-[Ll]ogs
-
+[Bb]uild/
+[Ll]ibrary/
+[Ll]ocal[Cc]ache/
+[Oo]bj/
+[Tt]emp/
+[Uu]nityGenerated/
 # file on crash reports
 sysinfo.txt
 # Unity3D generated meta files
@@ -25,7 +16,7 @@ sysinfo.txt
 ###
 # VS/MD solution and project files
 ###
-[Ee]xportedObj
+[Ee]xportedObj/
 *.booproj
 *.csproj
 *.sln
@@ -36,7 +27,6 @@ sysinfo.txt
 *.userprefs
 *.pidb
 .DS_Store
-.vscode
 
 ###
 # OS generated
@@ -49,5 +39,3 @@ sysinfo.txt
 Icon?
 ehthumbs.db
 Thumbs.db
-
-
