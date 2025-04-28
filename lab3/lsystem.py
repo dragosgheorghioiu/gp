@@ -24,7 +24,7 @@ def draw_l_system(t, instructions, angle, length):
             t.setheading(heading)
             t.pendown()
 
-length = 20
+length = 5
 
 plant_f = {
     "axiom": "X",
@@ -46,7 +46,6 @@ plant_c = {
 }
 
 final_string = apply_rules(plant_f)
-final_string = apply_rules(plant_c)
 
 t = turtle.Turtle()
 wn = turtle.Screen()
@@ -56,7 +55,7 @@ t.penup()
 t.goto(0, -wn.window_height() // 2 + 20)
 t.pendown()
 
-draw_l_system(t, final_string, plant_c["angle"], length)
+draw_l_system(t, final_string, plant_f["angle"], length)
 
 wn.mainloop()
 
