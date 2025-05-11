@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Electron Button Example</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="appContainer">
+    <div class="characterContainer">
+      <h1>RPG Character Generator</h1>
+      <button id="Generator">Generate NPC</button>
+      <p id="Name"></p>
+      <p id="Class"></p>
+      <img id="ClassArt" src="./characters/warrior.webp" alt="Character" />
+      <p id="Health"></p>
+      <p id="Damage"></p>
+      <p id="CharacterTrait"></p>
+    </div>
+    <div class="weaponContainer">
+      <h1>RPG Weapon Generator</h1>
+      <button id="WeaponGenerator">Generate Weapon</button>
+      <p id="WeaponType"></p>
+      <img id="WeaponArt" src="./characters/warrior.webp" alt="Character" />
+      <p id="WeaponDamage"></p>
+      <p id="WeaponDurability"></p>
+      <p id="WeaponRarity"></p>
+      <p id="WeaponEffects"></p>
+    </div>
+  </div>
+
+  <script type="module" src="./renderer.js"></script>
+</body>
+
+</html>

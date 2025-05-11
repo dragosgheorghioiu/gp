@@ -19,19 +19,18 @@ def diamond_square():
 
         for x in range(0, GRID_SIZE - 1, step_size):
             for y in range(0, GRID_SIZE - 1, step_size):
-                diamond_step(x, y, step_size, r)
-
+                square_step(x, y, step_size, r)
 
         for x in range(0, GRID_SIZE, half_step):
             for y in range((x + half_step) % step_size, GRID_SIZE, step_size):
-                square_step(x, y, half_step, r)
+                diamond_step(x, y, half_step, random_range)
 
-        step_size //= 2
+        step_size = half_step
         random_range = max(1, random_range // 2)
         r = random.randint(-random_range, random_range)
     
 
-def diamond_step(x: int, y: int, size: int, r: int):
+def square_step(x: int, y: int, size: int, r: int):
     top_left = grid[x][y]
     top_right = grid[x + size][y]
     bottom_left = grid[x][y + size]
@@ -39,7 +38,7 @@ def diamond_step(x: int, y: int, size: int, r: int):
 
     grid[x + size // 2][y + size // 2] = (top_left + top_right + bottom_left + bottom_right) // 4 + r
 
-def square_step(x: int, y: int, size: int, r: int):
+def diamond_step(x: int, y: int, size: int, r: int):
     top = grid[x + size][y] if x + size < GRID_SIZE else None
     bottom = grid[x - size][y] if x - size >= 0 else None 
     right = grid[x][y + size] if y + size < GRID_SIZE else None

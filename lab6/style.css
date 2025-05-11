@@ -1,0 +1,62 @@
+* {
+  font-family: 'JetBrainsMono NF';
+  font-size: 1rem;
+}
+
+body {
+  background: #242424;
+}
+
+h1 {
+  color: #DDD;
+}
+
+p {
+  color: #DDD;
+  display: none;
+}
+
+img {
+  display: none;
+}
+
+button {
+  border: 2px solid #DDD;
+  border-radius: 4px;
+  background: #242424;
+  color: #DDD;
+  padding: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #DDD;
+  color: #242424;
+  transition: all 0.3s ease;
+}
+
+.appContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  height: 100%;
+}
+
+.characterContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 500px;
+}
+
+.weaponContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 500px;
+  width: 360px;
+}

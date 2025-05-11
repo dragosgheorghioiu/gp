@@ -1,6 +1,5 @@
 import random
 
-
 def get_neighbors(row: int, col: int, grid_size: int) -> list[tuple[int, int]]:
     neigh_offsets = [
         (-1, -1),
