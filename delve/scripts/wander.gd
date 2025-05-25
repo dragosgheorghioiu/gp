@@ -30,9 +30,15 @@ func _physics_process(delta: float) -> void:
 	else:
 		# Apply friction when there's no input
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
-		
+	
+	var ground_y = dunes.get_ground_y_at(global_position.x)  # You need to create this function
+	var vertical_distance = abs(global_position.y - ground_y)
 	var slope_angle = get_slope_angle_at(global_position.x)
-	rotation = lerp_angle(rotation, slope_angle, 0.2)  # smooth blend
+	
+	if vertical_distance < 100:  # threshold distance, adjust as needed
+		rotation = lerp_angle(rotation, slope_angle, 0.2)  # smooth blend
+	else:
+		rotation = lerp_angle(rotation, 0, 0.2)  # rotate back to horizontal
 	
 	# Flip sprite based on movement direction
 	if velocity.x < 0:
@@ -61,9 +67,12 @@ func _on_animation_finished(anim_name: String) -> void:
 		is_braking_end = true
 
 func get_slope_angle_at(x: float) -> float:
+	if x > dunes.dune_points.size() - 2:
+		return 0
 	var idx = clamp(int(x), 1, dunes.dune_points.size() - 2)
 	var p1 = dunes.dune_points[idx - 1]
 	var p2 = dunes.dune_points[idx + 1]
 	
 	var delta = p2 - p1
+	
 	return atan2(delta.y, delta.x)  # This gives you the angle in radians

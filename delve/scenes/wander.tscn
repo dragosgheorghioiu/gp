@@ -53,22 +53,6 @@ states/run/position = Vector2(394.691, 190.458)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_wrqi8"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_sq55v"), "run", "brake", SubResource("AnimationNodeStateMachineTransition_nfbs1"), "brake_end", "idle", SubResource("AnimationNodeStateMachineTransition_qhhx3"), "brake_end", "run", SubResource("AnimationNodeStateMachineTransition_j2ip7"), "brake", "brake_end", SubResource("AnimationNodeStateMachineTransition_2hopr")]
 graph_offset = Vector2(-161, -116)
 
-[sub_resource type="Animation" id="Animation_qhhx3"]
-resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [1, 0]
-}
-
 [sub_resource type="Animation" id="Animation_j2ip7"]
 length = 0.001
 tracks/0/type = "value"
@@ -82,23 +66,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_4fph6"]
-resource_name = "running"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [2, 3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_uae3r"]
@@ -132,6 +99,39 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_qhhx3"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_4fph6"]
+resource_name = "running"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7oq4j"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://lss4wef85m1y"]
+
+[ext_resource type="Texture2D" uid="uid://d3dggddydpsn8" path="res://assets/plant_f.png" id="1_k0fvv"]
+
+[node name="PlantC" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-16, -80)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_k0fvv")
