@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg383g3tui382"]
+
+[ext_resource type="Script" uid="uid://cia4f3brwv7ex" path="res://scripts/dunes.gd" id="1_rj0gn"]
+[ext_resource type="PackedScene" uid="uid://cbykugb04jkeh" path="res://scenes/wander.tscn" id="2_0mhrw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gp5gu"]
+size = Vector2(65, 1170)
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Wander" parent="." instance=ExtResource("2_0mhrw")]
+position = Vector2(134, -161)
+
+[node name="Dunes" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_rj0gn")
+wave_scale = 0.002
+amplitude = 200.0
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+position = Vector2(-48.5, 56)
+shape = SubResource("RectangleShape2D_gp5gu")
