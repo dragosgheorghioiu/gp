@@ -31,14 +31,14 @@ func _physics_process(delta: float) -> void:
 		# Apply friction when there's no input
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 	
-	var ground_y = dunes.get_ground_y_at(global_position.x)  # You need to create this function
+	var ground_y = dunes.get_ground_y_at(global_position.x)
 	var vertical_distance = abs(global_position.y - ground_y)
 	var slope_angle = get_slope_angle_at(global_position.x)
 	
-	if vertical_distance < 100:  # threshold distance, adjust as needed
-		rotation = lerp_angle(rotation, slope_angle, 0.2)  # smooth blend
+	if vertical_distance < 100:
+		rotation = lerp_angle(rotation, slope_angle, 0.1)
 	else:
-		rotation = lerp_angle(rotation, 0, 0.2)  # rotate back to horizontal
+		rotation = lerp_angle(rotation, 0, 0.2)
 	
 	# Flip sprite based on movement direction
 	if velocity.x < 0:

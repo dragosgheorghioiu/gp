@@ -4,11 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://cbykugb04jkeh" path="res://scenes/wander.tscn" id="2_0mhrw"]
 [ext_resource type="PackedScene" uid="uid://srsrr4xmk6ta" path="res://scenes/plant_c.tscn" id="3_i7uuc"]
 [ext_resource type="PackedScene" uid="uid://lss4wef85m1y" path="res://scenes/plant_f.tscn" id="4_af17b"]
+[ext_resource type="PackedScene" uid="uid://8er8jxjqxkbb" path="res://scenes/random_character.tscn" id="5_lk43p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gp5gu"]
-size = Vector2(65, 1170)
-
-[sub_resource type="TileSet" id="TileSet_af17b"]
+size = Vector2(246, 4493)
 
 [node name="MainScene" type="Node2D"]
 
@@ -29,15 +28,14 @@ wave_scale = 0.002
 amplitude = 200.0
 plant_scene_c = ExtResource("3_i7uuc")
 plant_scene_f = ExtResource("4_af17b")
+random_character = ExtResource("5_lk43p")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="LeftWall" type="Node2D" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
+[node name="StaticBody2D" type="StaticBody2D" parent="LeftWall"]
+collision_layer = 3
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
-position = Vector2(-48.5, 56)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall/StaticBody2D"]
+position = Vector2(-218, 130.5)
 shape = SubResource("RectangleShape2D_gp5gu")
-
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_af17b")
-format = 2

@@ -144,6 +144,7 @@ _data = {
 }
 
 [node name="Wander" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_dsosc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
