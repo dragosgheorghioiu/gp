@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://8er8jxjqxkbb"]
+[gd_scene load_steps=6 format=3 uid="uid://8er8jxjqxkbb"]
 
-[ext_resource type="Texture2D" uid="uid://b58woaempu887" path="res://assets/sandstorm.png" id="1_mj00o"]
 [ext_resource type="Script" uid="uid://bnkfmpovsko7s" path="res://scenes/random_character.gd" id="1_p5d1x"]
-[ext_resource type="Script" uid="uid://dk8g7iiilp2eh" path="res://scenes/label.gd" id="3_h5glp"]
+[ext_resource type="Texture2D" uid="uid://ci465cg1htfmx" path="res://assets/characters/cleric.webp" id="2_unk3f"]
+[ext_resource type="Texture2D" uid="uid://co0041etugnl8" path="res://assets/characters/mage.webp" id="3_cp30f"]
+[ext_resource type="Texture2D" uid="uid://djuk3kfviximy" path="res://assets/characters/duelist.webp" id="4_pncml"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p5d1x"]
 size = Vector2(128, 128)
@@ -10,27 +11,13 @@ size = Vector2(128, 128)
 [node name="RandomCharacter" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_p5d1x")
+skins = Array[Texture]([ExtResource("2_unk3f"), ExtResource("4_pncml"), ExtResource("3_cp30f")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -56)
-scale = Vector2(8, 8)
-texture = ExtResource("1_mj00o")
-region_enabled = true
+position = Vector2(0, -64)
+texture = ExtResource("4_pncml")
 region_rect = Rect2(8, 0, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -64)
 shape = SubResource("RectangleShape2D_p5d1x")
-
-[node name="Node2D" type="Node2D" parent="."]
-script = ExtResource("3_h5glp")
-
-[node name="Label" type="Label" parent="Node2D"]
-offset_left = -64.0
-offset_top = -192.0
-offset_right = 64.0
-offset_bottom = -129.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "NPC"
-horizontal_alignment = 1
-vertical_alignment = 1

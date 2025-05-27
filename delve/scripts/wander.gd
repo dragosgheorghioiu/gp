@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	var slope_angle = get_slope_angle_at(global_position.x)
 	
 	if vertical_distance < 100:
-		rotation = lerp_angle(rotation, slope_angle, 0.1)
+		rotation = slope_angle
 	else:
 		rotation = lerp_angle(rotation, 0, 0.2)
 	
@@ -67,12 +67,22 @@ func _on_animation_finished(anim_name: String) -> void:
 		is_braking_end = true
 
 func get_slope_angle_at(x: float) -> float:
-	if x > dunes.dune_points.size() - 2:
+	if dunes.dune_points.size() < 2:
 		return 0
-	var idx = clamp(int(x), 1, dunes.dune_points.size() - 2)
-	var p1 = dunes.dune_points[idx - 1]
-	var p2 = dunes.dune_points[idx + 1]
+
+	# If outside the terrain range
+	if x <= dunes.dune_points[0].x or x >= dunes.flat_points[0].x:
+		return 0
+
+	# Find the segment that x lies within
+	for i in range(dunes.dune_points.size() - 1):
+		var p1 = dunes.dune_points[i]
+		var p2 = dunes.dune_points[i + 1]
+		if x >= p1.x and x <= p2.x:
+			var delta = p2 - p1
+			return atan2(delta.y, delta.x)
+
+	return 0  # Default fallback
 	
-	var delta = p2 - p1
-	
-	return atan2(delta.y, delta.x)  # This gives you the angle in radians
+func _go_to_dungeon(area: Area2D) -> void:
+	print("wee")

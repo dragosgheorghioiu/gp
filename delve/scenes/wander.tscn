@@ -172,3 +172,4 @@ libraries = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
+limit_right = 6000

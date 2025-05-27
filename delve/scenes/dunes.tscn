@@ -1,15 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://bg383g3tui382"]
+[gd_scene load_steps=10 format=3 uid="uid://bg383g3tui382"]
 
+[ext_resource type="Script" uid="uid://cbmrlkpdp3nh3" path="res://scenes/main_scene.gd" id="1_lhdhn"]
 [ext_resource type="Script" uid="uid://cia4f3brwv7ex" path="res://scripts/dunes.gd" id="1_rj0gn"]
 [ext_resource type="PackedScene" uid="uid://cbykugb04jkeh" path="res://scenes/wander.tscn" id="2_0mhrw"]
 [ext_resource type="PackedScene" uid="uid://srsrr4xmk6ta" path="res://scenes/plant_c.tscn" id="3_i7uuc"]
 [ext_resource type="PackedScene" uid="uid://lss4wef85m1y" path="res://scenes/plant_f.tscn" id="4_af17b"]
 [ext_resource type="PackedScene" uid="uid://8er8jxjqxkbb" path="res://scenes/random_character.tscn" id="5_lk43p"]
+[ext_resource type="PackedScene" uid="uid://4ke8pgu2ywpq" path="res://scenes/portal.tscn" id="7_pmdyq"]
+[ext_resource type="PackedScene" uid="uid://c4cnk7v2lpv72" path="res://scenes/random_weapon.tscn" id="7_rsdev"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gp5gu"]
 size = Vector2(246, 4493)
 
 [node name="MainScene" type="Node2D"]
+script = ExtResource("1_lhdhn")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -850.0
@@ -19,6 +23,7 @@ offset_bottom = 2432.0
 color = Color(0.523152, 0.808076, 0.990187, 1)
 
 [node name="Wander" parent="." instance=ExtResource("2_0mhrw")]
+unique_name_in_owner = true
 position = Vector2(134, -161)
 
 [node name="Dunes" type="Node2D" parent="."]
@@ -29,6 +34,9 @@ amplitude = 200.0
 plant_scene_c = ExtResource("3_i7uuc")
 plant_scene_f = ExtResource("4_af17b")
 random_character = ExtResource("5_lk43p")
+random_weapon = ExtResource("7_rsdev")
+portal_scene = ExtResource("7_pmdyq")
+plant_spawn_count = 20
 
 [node name="LeftWall" type="Node2D" parent="."]
 
@@ -37,5 +45,39 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall/StaticBody2D"]
-position = Vector2(-218, 130.5)
+position = Vector2(-200, 88)
 shape = SubResource("RectangleShape2D_gp5gu")
+
+[node name="RightW" type="Node2D" parent="."]
+position = Vector2(6125, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RightW"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightW/StaticBody2D"]
+shape = SubResource("RectangleShape2D_gp5gu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NPCStats" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_top = 584.0
+offset_right = 320.0
+offset_bottom = 744.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Sal"
+vertical_alignment = 2
+
+[node name="WeaponStats" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 648.0
+offset_top = 544.0
+offset_right = 1380.0
+offset_bottom = 704.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "hello"
+horizontal_alignment = 2
+vertical_alignment = 2
