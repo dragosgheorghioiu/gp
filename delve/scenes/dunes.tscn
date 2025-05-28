@@ -62,12 +62,13 @@ shape = SubResource("RectangleShape2D_gp5gu")
 
 [node name="NPCStats" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
+offset_left = 8.0
 offset_top = 584.0
-offset_right = 320.0
+offset_right = 328.0
 offset_bottom = 744.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-text = "Sal"
+text = "temp"
 vertical_alignment = 2
 
 [node name="WeaponStats" type="Label" parent="CanvasLayer"]

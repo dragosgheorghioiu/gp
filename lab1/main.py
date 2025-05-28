@@ -1,7 +1,30 @@
 import pygame
 import random
 
-width, height = 1800, 1200
+width, height = 1280, 720
+length = 20 
+
+terrain_symbols = {
+    "~": pygame.colordict.THECOLORS['blue'],
+    ".": pygame.colordict.THECOLORS['green'],
+    "#": pygame.colordict.THECOLORS['brown']
+}
+
+def render_terrain_to_surface(terrain):
+    surface = pygame.Surface((20 * length, 20 * length))
+    for x in range(20):
+        for y in range(20):
+            color = terrain_symbols[terrain[x][y]]
+            pygame.draw.rect(surface, color, (y * length, x * length, length, length))
+    return surface
+
+def save_terrain_image():
+    pygame.init()
+    terrain = init_terrain_grid()
+    print_terrain_grid(terrain)
+    surface = render_terrain_to_surface(terrain)
+    pygame.image.save(surface, "terrain.png")
+    pygame.quit()
 
 def render_grid(color_grid):
     for x in range(width // length):
@@ -41,13 +64,12 @@ def print_terrain_grid(terrain):
 
 
 if __name__ == "__main__":
-    print_terrain_grid(init_terrain_grid())
+    save_terrain_image()
 
     pygame.init()
 
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption('Color Grid')
-    length = 50 
 
     color_grid = init_color_grid()
 
@@ -56,6 +78,9 @@ if __name__ == "__main__":
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_a:
+                    color_grid = init_color_grid()
 
         render_grid(color_grid)
 

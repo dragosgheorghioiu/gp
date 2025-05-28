@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dehvv0ajuaqkd"]
+
+[ext_resource type="Texture2D" uid="uid://ci465cg1htfmx" path="res://assets/characters/cleric.webp" id="1_xxgf6"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xxgf6")

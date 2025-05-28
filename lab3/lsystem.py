@@ -1,4 +1,6 @@
 import turtle
+from PIL import Image
+import os
 
 def apply_rules(plant):
     axiom = plant["axiom"]
@@ -24,7 +26,31 @@ def draw_l_system(t, instructions, angle, length):
             t.setheading(heading)
             t.pendown()
 
-length = 5
+def render_and_save(plant, filename, length):
+    final_string = apply_rules(plant)
+
+    screen = turtle.Screen()
+    screen.setup(width=800, height=800)
+    t = turtle.Turtle()
+    t.speed(0)
+    t.hideturtle()
+
+    t.left(90)
+    t.penup()
+    t.goto(0, -screen.window_height() // 2 + 20)
+    t.pendown()
+
+    draw_l_system(t, final_string, plant["angle"], length)
+
+    canvas = turtle.getcanvas()
+    canvas.postscript(file=filename + ".eps")
+
+    # Convert EPS to PNG
+    img = Image.open(filename + ".eps")
+    img.save(filename + ".png")
+    os.remove(filename + ".eps")  # Clean up EPS file
+
+    screen.bye()
 
 plant_f = {
     "axiom": "X",
@@ -45,17 +71,5 @@ plant_c = {
     "iterations": 4,
 }
 
-final_string = apply_rules(plant_f)
-
-t = turtle.Turtle()
-wn = turtle.Screen()
-t.speed(0)
-t.left(90)
-t.penup()
-t.goto(0, -wn.window_height() // 2 + 20)
-t.pendown()
-
-draw_l_system(t, final_string, plant_f["angle"], length)
-
-wn.mainloop()
-
+render_and_save(plant_f, "plant_f", length=5)
+render_and_save(plant_c, "plant_c", length=5)

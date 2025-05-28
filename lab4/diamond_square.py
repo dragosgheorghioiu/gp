@@ -1,6 +1,7 @@
 import random
+import matplotlib.pyplot as plt
 
-n = 2
+n = 10
 GRID_SIZE = 2 ** n + 1
 grid = [[0] * GRID_SIZE for _ in range(GRID_SIZE)]
 
@@ -23,7 +24,7 @@ def diamond_square():
 
         for x in range(0, GRID_SIZE, half_step):
             for y in range((x + half_step) % step_size, GRID_SIZE, step_size):
-                diamond_step(x, y, half_step, random_range)
+                diamond_step(x, y, half_step, r)
 
         step_size = half_step
         random_range = max(1, random_range // 2)
@@ -53,3 +54,8 @@ if __name__ == "__main__":
     for row in grid:
         print(["{:>2}".format(val) for val in row])
 
+    plt.imshow(grid, cmap='terrain')
+    plt.colorbar(label='Height')
+    plt.title('Diamond-Square Height Map')
+    plt.axis('off')
+    plt.show()
